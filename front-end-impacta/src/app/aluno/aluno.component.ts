@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-aluno',
@@ -11,5 +12,15 @@ export class AlunoComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  pickDate() {
+
+  }
+
+  maskTelefone(){
+    $(document).ready(function(){
+    $('#telefone').mask('(00) 0000-0000');
+});
+}
 
 }

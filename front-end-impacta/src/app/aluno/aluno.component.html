@@ -3,17 +3,53 @@
     <div class="modal-header">
       <h5 class="modal-title"><b>Listagem de Alunos</b></h5>
       <button type="button" class="close">
-        <svg class="bi bi-person-lines-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 100-6 3 3 0 000 6zm7 1.5a.5.5 0 01.5-.5h2a.5.5 0 010 1h-2a.5.5 0 01-.5-.5zm-2-3a.5.5 0 01.5-.5h4a.5.5 0 010 1h-4a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h4a.5.5 0 010 1h-4a.5.5 0 01-.5-.5zm2 9a.5.5 0 01.5-.5h2a.5.5 0 010 1h-2a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
+        <svg class="bi bi-person-lines-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 100-6 3 3 0 000 6zm7 1.5a.5.5 0 01.5-.5h2a.5.5 0 010 1h-2a.5.5 0 01-.5-.5zm-2-3a.5.5 0 01.5-.5h4a.5.5 0 010 1h-4a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h4a.5.5 0 010 1h-4a.5.5 0 01-.5-.5zm2 9a.5.5 0 01.5-.5h2a.5.5 0 010 1h-2a.5.5 0 01-.5-.5z"
+            clip-rule="evenodd" />
         </svg>
       </button>
     </div>
-      
-    
-    
-          </div>
-        </div>
-      <div class="modal-footer">
+
+    <div class="form-row">
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Matricula</th>
+            <th>Disciplina</th>
+            <th>Operações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Matheus</td>
+            <td>Balbino</td>
+            <td>9999999</td>
+            <td>Estrutura de Dados</td>
+            <td>
+              <button type="button" class="btn btn-primary">
+                <svg class="bi bi-gear-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 01-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 01.872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 012.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 012.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 01.872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 01-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 01-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 100-5.86 2.929 2.929 0 000 5.858z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+              &nbsp;
+              <button type="button" class="btn btn-primary">
+                <svg class="bi bi-trash-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M2.5 1a1 1 0 00-1 1v1a1 1 0 001 1H3v9a2 2 0 002 2h6a2 2 0 002-2V4h.5a1 1 0 001-1V2a1 1 0 00-1-1H10a1 1 0 00-1-1H7a1 1 0 00-1 1H2.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM8 5a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 018 5zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="modal-footer">
     </div>
   </form>
 </div>
@@ -23,9 +59,13 @@
     <div class="modal-header">
       <h5 class="modal-title"><b>Cadastro de Novo Aluno</b></h5>
       <button type="button" class="close">
-        <svg class="bi bi-person-plus-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 100-6 3 3 0 000 6zm7.5-3a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-2a.5.5 0 010-1H13V5.5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
-          <path fill-rule="evenodd" d="M13 7.5a.5.5 0 01.5-.5h2a.5.5 0 010 1H14v1.5a.5.5 0 01-1 0v-2z" clip-rule="evenodd"/>
+        <svg class="bi bi-person-plus-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 100-6 3 3 0 000 6zm7.5-3a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-2a.5.5 0 010-1H13V5.5a.5.5 0 01.5-.5z"
+            clip-rule="evenodd" />
+          <path fill-rule="evenodd" d="M13 7.5a.5.5 0 01.5-.5h2a.5.5 0 010 1H14v1.5a.5.5 0 01-1 0v-2z"
+            clip-rule="evenodd" />
         </svg>
       </button>
     </div>
@@ -41,63 +81,20 @@
       </div>
 
       <div class="form-row">
-        <div class="col-5 mb-3">
-          <input class="form-control" placeholder="Data de Nascimento" type="date" name="dataNascimento">
-        </div>
-
-        <div class="col-7 mb-3 d-flex align-items-center l-200">
-          <div class="custom-control custom-radio custom-control-inline">
-            <input class="custom-control-input" type="radio" value="" name="sexo" id="masculino">
-            <label class="custom-control-label" for="male">Masculino</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input class="custom-control-input" type="radio" value="" name="sexo" id="feminino">
-            <label class="custom-control-label" for="female">Feminino</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input class="custom-control-input" type="radio" value="" name="sexo" id="outros">
-            <label class="custom-control-label" for="other">Outros</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="col mb-3">
-          <input class="form-control" placeholder="Digite seu endereço..." type="text" name="Rua/Avenida/Bloco">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="col mb-3">
-          <input class="form-control" placeholder="Cidade" type="text" name="cidade">
-        </div>
-
-        <div class="col mb-3">
-          <input class="form-control" placeholder="Estado" type="text" name="estado">
-        </div>
-
-        <div class="col mb-3">
-          <input class="form-control" placeholder="CEP" type="text" name="cep">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="col mb-3">
-          <input class="form-control" placeholder="Telefone" type="text" name="telefone">
-        </div>
-
-        <div class="col mb-3">
-          <input class="form-control" placeholder="Celular" type="text" name="telefoneCelular">
-        </div>
-      </div>
-
-      <div class="form-row">
         <div class="col">
           <input class="form-control" placeholder="Matrícula" type="text" name="matricula">
         </div>
 
-        <div class="col mb-3">
-          <input class="form-control" placeholder="CPF" type="text" name="documentoCPF">
+        <div class="input-group col mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Disciplinas</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Escolha uma disciplina para se cadastrar...</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
         </div>
       </div>
 
