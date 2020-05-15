@@ -1,0 +1,46 @@
+<div class="container">
+  <form id="new_customer" method="post">
+    <div class="modal-header">
+      <h5 class="modal-title"><b>Cadastro de Novo Aluno</b></h5>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="col-9 mb-3">
+          <input class="form-control" placeholder="Digite o nome completo do Aluno..." type="text" name="nomeAluno">
+        </div>
+
+        <div class="input-group col-3 mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">RA</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Digite a sua Matrícula..." type="text" name="matriculaAluno">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-group col mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Disciplinas</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Escolha uma disciplina para cadastrar o aluno...</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer row classFooter">
+      <div class="col mb-3">
+        <input type="submit" name="cancel" id="voltar" value="Voltar" class="btn btn-secondary" [routerLink]="['/aluno/details']">
+      </div>
+
+      <button type="button" class="btn btn-primary col-1 mb-3 cssbutton" [routerLink]="['/aluno/edit']">
+        Cadastrar
+      </button>
+    </div>
+  </form>
+</div>

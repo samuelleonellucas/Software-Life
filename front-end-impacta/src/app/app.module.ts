@@ -10,6 +10,7 @@ import { DisciplinaComponent } from './disciplina/disciplina.component';
 import { AlunoComponent } from './aluno/aluno.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { AlunoEditComponent } from './aluno-edit/aluno-edit.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     DisciplinaComponent,
     AlunoComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    AlunoEditComponent
   ],
   imports: [
     BrowserModule,
