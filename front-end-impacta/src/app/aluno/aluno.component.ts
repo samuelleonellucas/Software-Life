@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-declare var $: any;
+import { Component, OnInit } from "@angular/core";
+import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-aluno',
-  templateUrl: './aluno.component.html',
-  styleUrls: ['./aluno.component.css']
+  selector: "app-aluno",
+  templateUrl: "./aluno.component.html",
+  styleUrls: ["./aluno.component.css"]
 })
 export class AlunoComponent implements OnInit {
 
@@ -13,14 +13,14 @@ export class AlunoComponent implements OnInit {
   ngOnInit() {
   }
 
-  pickDate() {
-
+  private showSweetAlert() {
+    Swal.fire({
+      title: '<strong>Você deseja excluir esse registro?</u></strong>',
+      icon: 'warning',
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+    })
   }
-
-  maskTelefone(){
-    $(document).ready(function(){
-    $('#telefone').mask('(00) 0000-0000');
-});
-}
 
 }
