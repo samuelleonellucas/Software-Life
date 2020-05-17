@@ -9,10 +9,10 @@ import { AlunoEditComponent } from './aluno-edit/aluno-edit.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'aluno/details', component: AlunoComponent },
-  { path: 'professor/details', component: ProfessorComponent },
-  { path: 'disciplina/details', component: DisciplinaComponent },
-  { path: 'aluno/edit', component: AlunoEditComponent }
+  { path: 'alunos', component: AlunoComponent },
+  { path: 'professor', component: ProfessorComponent },
+  { path: 'disciplinas', component: DisciplinaComponent },
+  { path: 'aluno/:id', component: AlunoEditComponent }
 
 ];
 

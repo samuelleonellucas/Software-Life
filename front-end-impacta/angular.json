@@ -121,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "front-end-impacta"
+    }
+  },
+  "defaultProject": "front-end-impacta",
+  "cli": {
+    "analytics": "1e966e20-99d2-49f6-9eb8-e9af4a952fbc"
+  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { AlunosService } from '../shared/services/alunos.service';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-aluno',
@@ -11,16 +12,19 @@ import { ToastrService } from 'ngx-toastr';
 export class AlunoComponent implements OnInit {
 
   alunos: any = [];
+  alunoId: string;
+
   constructor(
     private alunoService: AlunosService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.getAlunos();
-  }
+   }
 
-  private showSweetAlert() {
+  showSweetAlert() {
     Swal.fire({
       title: '<strong>Você deseja excluir esse registro?</u></strong>',
       icon: 'warning',
@@ -32,14 +36,9 @@ export class AlunoComponent implements OnInit {
   async getAlunos() {
     try {
       this.alunos = await this.alunoService.list();
-      this.toastr.success('Alunos');
     } catch (error) {
-
+      this.toastr.error('Error ao carregar alunos');
     }
 
   }
-
-  // async create() {
-  //   const res
-  // }
 }

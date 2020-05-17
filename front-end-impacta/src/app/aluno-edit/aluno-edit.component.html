@@ -7,14 +7,14 @@
     <div class="modal-body">
       <div class="form-row">
         <div class="col-9 mb-3">
-          <input class="form-control" placeholder="Digite o nome completo do Aluno..." type="text" name="nomeAluno">
+          <input  [(ngModel)]="aluno.nome" name="nome" class="form-control" placeholder="Digite o nome completo do Aluno..." type="text" name="nomeAluno">
         </div>
 
         <div class="input-group col-3 mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">RA</span>
           </div>
-          <input type="text" class="form-control" placeholder="Digite a sua Matrícula..." type="text" name="matriculaAluno">
+          <input  [(ngModel)]="aluno.matricula" name="matricula" type="text" class="form-control" placeholder="Digite a sua Matrícula..." type="text" name="matriculaAluno">
         </div>
       </div>
 
@@ -35,10 +35,10 @@
 
     <div class="modal-footer row classFooter">
       <div class="col mb-3">
-        <input type="submit" name="cancel" id="voltar" value="Voltar" class="btn btn-secondary" [routerLink]="['/aluno/details']">
+        <input type="submit" name="cancel" id="voltar" value="Voltar" class="btn btn-secondary" [routerLink]="['/alunos']">
       </div>
 
-      <button type="button" class="btn btn-primary col-1 mb-3 cssbutton" [routerLink]="['/aluno/edit']">
+      <button (click)="create()" type="button" class="btn btn-primary col-1 mb-3 cssbutton">
         Cadastrar
       </button>
 
