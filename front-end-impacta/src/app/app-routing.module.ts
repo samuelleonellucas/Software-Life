@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'alunos', component: AlunoComponent },
-  { path: 'professor', component: ProfessorComponent },
+  { path: 'professores', component: ProfessorComponent },
   { path: 'disciplinas', component: DisciplinaComponent },
   { path: 'aluno/:id', component: AlunoEditComponent }
 
