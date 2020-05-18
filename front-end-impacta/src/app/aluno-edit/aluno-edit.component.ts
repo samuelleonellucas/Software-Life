@@ -59,7 +59,7 @@ export class AlunoEditComponent implements OnInit {
   }
   async findById() {
     try {
-      const res = await this.alunoService.getById({}, this.alunoId);
+      const res = await this.alunoService.getById(this.alunoId);
       if (res) {
         this.aluno  = {
           nome: res['data'].first_name,
