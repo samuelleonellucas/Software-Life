@@ -9,12 +9,12 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./aluno-edit.component.css']
 })
 export class AlunoEditComponent implements OnInit {
-  public aluno = {
+  public aluno: any = {
     nome: '',
     disciplinaSelcionada: [] = [],
     matricula: ''
   };
-  alunoId: string;
+  public alunoId: string;
   public disciplinas: Array<any>;
 
   constructor(
@@ -31,6 +31,7 @@ export class AlunoEditComponent implements OnInit {
       if (this.alunoId === 'details') {
         return;
       }
+      this.findById();
     });
   }
 
@@ -55,6 +56,21 @@ export class AlunoEditComponent implements OnInit {
       this.toastrService.error('Erro ao criar aluno');
     }
 
+  }
+  async findById() {
+    try {
+      const res = await this.alunoService.getById({}, this.alunoId);
+      if (res) {
+        this.aluno  = {
+          nome: res['data'].first_name,
+          matricula: res['data'].id,
+          id: res['data'].id
+        };
+        return;
+      }
+    } catch (error) {
+      this.toastrService.error('Erro ao obter aluno por id');
+    }
   }
 
 }
