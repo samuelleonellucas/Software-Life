@@ -18,7 +18,7 @@ export class AlunosService {
   }
   create(body: any, query: any = {}) {
     const url = `${this.url}/users`;
-    return this.http.get(url).toPromise();
+    return this.http.post(url, body).toPromise();
   }
   getById(query: any = {}, id: string) {
     const url = `${this.url}/users/${id}`;
