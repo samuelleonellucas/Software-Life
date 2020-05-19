@@ -95,7 +95,7 @@ export class AlunoEditComponent implements OnInit {
         this.toastrService.info('A matricula não pode ser vazia');
         return;
       }
-      this.alunoId !== 'details' ? this.update() : this.create();
+      this.alunoId !== 'details' ? await this.update() : await this.create();
       this.router.navigateByUrl('/alunos');
     } catch (error) {
       console.log(error);
