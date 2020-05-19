@@ -1,9 +1,9 @@
 <div class="container">
+  <!-- <app-loader [condition]="loading"></app-loader> -->
   <form id="new_customer" method="post">
     <div class="modal-header">
       <h5 class="modal-title"><b>Cadastro de Novo Aluno</b></h5>
     </div>
-
     <div class="modal-body">
       <div class="form-row">
         <div class="col-9 mb-3">
@@ -23,14 +23,10 @@
       <div class="form-row">
         <div class="input-group col mb-3">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Disciplinas</label>
+            <label class="input-group-text">Disciplinas</label>
+            <ng-select [clearable]="true" [multiple]="true" bindValue="_id" [items]="aluno.disciplina" bindLabel="nome"
+              [(ngModel)]="aluno.disciplinaSelcionada" name="aluno.disciplinaSelcionada"></ng-select>
           </div>
-          <select class="custom-select" id="inputGroupSelect01">
-            <option selected>Escolha uma disciplina para cadastrar o aluno...</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
         </div>
       </div>
     </div>
@@ -41,13 +37,9 @@
           [routerLink]="['/alunos']">
       </div>
 
-      <button (click)="create()" type="button" class="btn btn-primary col-1 mb-3 cssbutton">
-        {{aluno.id ? 'Atualizar' : 'Cadastrar'}}
+      <button (click)="save()" type="button" class="btn btn-primary col-1 mb-3 cssbutton">
+        {{aluno._id ? 'Atualizar' : 'Cadastrar'}}
       </button>
-
-      <!-- <button type="button" class="btn btn-primary col-1 mb-3 cssbutton" [routerLink]="['/aluno/edit']">
-        Update
-      </button> -->
     </div>
   </form>
 </div>

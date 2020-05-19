@@ -13,6 +13,9 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { AlunoEditComponent } from './aluno-edit/aluno-edit.component';
 import { ToastrModule } from 'ngx-toastr';
+import { LoaderComponent } from './loader/loader.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -23,13 +26,16 @@ import { ToastrModule } from 'ngx-toastr';
     AlunoComponent,
     NavbarComponent,
     HomeComponent,
-    AlunoEditComponent
+    AlunoEditComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NgSelectModule,
     FormsModule,
+    NgxPaginationModule,
     HttpClientModule,
     SidebarModule.forRoot(),
     ToastrModule.forRoot()

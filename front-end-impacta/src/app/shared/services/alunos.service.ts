@@ -13,24 +13,24 @@ export class AlunosService {
   }
 
   list() {
-    const url = `${this.url}/users`;
+    const url = `${this.url}/students`;
     return this.http.get(url).toPromise();
   }
   create(body: any) {
-    const url = `${this.url}/users`;
+    const url = `${this.url}/students`;
     return this.http.post(url, body).toPromise();
   }
   getById(id: string) {
-    const url = `${this.url}/users/${id}`;
+    const url = `${this.url}/students/${id}`;
     return this.http.get(url).toPromise();
   }
   update(id: string, body: any) {
-    const url = `${this.url}/users/${id}`;
+    const url = `${this.url}/students/${id}`;
     return this.http.put(url, body).toPromise();
   }
   delete(id: string) {
-    const url = `${this.url}/users/${id}`;
-    return this.http.delete(url);
+    const url = `${this.url}/students/${id}`;
+    return this.http.delete(url).toPromise();
   }
 
 }
