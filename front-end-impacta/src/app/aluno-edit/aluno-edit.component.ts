@@ -53,18 +53,8 @@ export class AlunoEditComponent implements OnInit {
           _id: res['_id'],
           nome: res['nome'],
           matricula: res['matricula'],
-          disciplina: [
-            {
-              _id: '5ec1e84ab20f9743680b2e80',
-              nome: 'Banco de Dados'
-            },
-            {
-              _id: '5ec1e864b20f9743680b2e81',
-              nome: 'Engenharia de software'
-            }
-          ]
+          disciplinas: res['disciplinas']
         };
-        return;
       }
     } catch (error) {
       console.log(error);
@@ -88,11 +78,8 @@ export class AlunoEditComponent implements OnInit {
         return;
       }
       if (!this.aluno.disciplinaSelcionada) {
+        console.log(this.aluno.disciplinaSelcionada);
         this.toastrService.info('Selecione pelo menos uma disciplina');
-        return;
-      }
-      if (!this.aluno.matricula) {
-        this.toastrService.info('A matricula não pode ser vazia');
         return;
       }
       this.alunoId !== 'details' ? await this.update() : await this.create();

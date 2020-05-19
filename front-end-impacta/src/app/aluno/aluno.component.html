@@ -56,7 +56,7 @@
       </table>
     </div>
   </form>
-</div>
-<div class="d-flex justify-content-center">
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <div *ngIf="!loading" class="d-flex justify-content-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
 </div>
