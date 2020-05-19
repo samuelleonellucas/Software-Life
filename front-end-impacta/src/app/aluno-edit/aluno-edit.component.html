@@ -16,15 +16,15 @@
             <span class="input-group-text" id="basic-addon1">RA</span>
           </div>
           <input [(ngModel)]="aluno.matricula" disabled name="matricula" type="text" class="form-control"
-            placeholder="Digite a sua Matrícula..." type="text" name="matriculaAluno">
+            placeholder="A matrícula será gerada..." type="text" name="matriculaAluno">
         </div>
       </div>
 
       <div class="row">
-        <div class="col-3 mb-3">
+        <div class="input-group col-3 mb-3">
           <label class="input-group-text">Disciplinas</label>
         </div>
-        <div class="col">
+        <div class="col ngselectStyle">
           <ng-select [clearable]="true" [multiple]="true" bindValue="_id" [items]="aluno.disciplinas" bindLabel="nome"
             [(ngModel)]="aluno.disciplinaSelcionada" name="aluno.disciplinaSelcionada" [closeOnSelect]="false"
             [searchable]="false">
