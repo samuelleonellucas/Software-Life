@@ -21,7 +21,7 @@
           <tr>
             <th>#</th>
             <th>Nome</th>
-            <th>Matrícula</th>
+            <th>RA</th>
             <th>Disciplina</th>
             <th>Operações</th>
           </tr>
@@ -29,11 +29,11 @@
         <tbody *ngFor="let aluno of alunos | paginate : {itemsPerPage: 7, currentPage: p}">
           <tr>
             <th class="align-middle" scope="row">{{aluno?.id}}</th>
-            <td class="align-middle">{{aluno?.nome}}</td>
-            <td class="align-middle">{{aluno?.matricula}}</td>
-            <td class="align-middle">{{aluno?._id}}</td>
+            <td class="align-middle">{{aluno?.name}}</td>
+            <td class="align-middle">{{aluno?.RA}}</td>
+            <td class="align-middle">{{aluno.disciplines}}</td>
             <td>
-              <button type="button" class="btn btn-primary" id="editButton" [routerLink]="['/aluno', aluno._id]">
+              <button type="button" class="btn btn-primary" id="editButton" [routerLink]="['/aluno', aluno.id]">
                 <svg class="bi bi-gear-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
                   xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd"

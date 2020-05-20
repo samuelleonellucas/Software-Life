@@ -6,6 +6,7 @@ import { ProfessorComponent } from './professor/professor.component';
 import { HomeComponent } from './home/home.component';
 import { AlunoEditComponent } from './aluno-edit/aluno-edit.component';
 import { ProfessorEditComponent } from './professor-edit/professor-edit.component';
+import { DisciplinaEditComponent } from './disciplina-edit/disciplina-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'professores', component: ProfessorComponent },
   { path: 'disciplinas', component: DisciplinaComponent },
   { path: 'aluno/:id', component: AlunoEditComponent },
-  { path: 'professor/:id', component: ProfessorEditComponent }
+  { path: 'professor/:id', component: ProfessorEditComponent },
+  { path: 'disciplinas/:id', component: DisciplinaEditComponent },
 
 ];
 

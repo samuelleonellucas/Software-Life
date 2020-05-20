@@ -17,6 +17,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ProfessorEditComponent } from './professor-edit/professor-edit.component';
+import { DisciplinaEditComponent } from './disciplina-edit/disciplina-edit.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ProfessorEditComponent } from './professor-edit/professor-edit.componen
     HomeComponent,
     AlunoEditComponent,
     LoaderComponent,
-    ProfessorEditComponent
+    ProfessorEditComponent,
+    DisciplinaEditComponent
   ],
   imports: [
     BrowserModule,

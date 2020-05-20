@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { AlunosService } from '../shared/services/alunos.service';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute } from '@angular/router';
-import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-aluno',
@@ -14,12 +12,12 @@ export class AlunoComponent implements OnInit {
 
   alunos: any = [];
   alunoId: string;
+  disciplines: any;
   p = 1;
   loading = false;
   constructor(
     private alunoService: AlunosService,
     private toastr: ToastrService,
-    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -54,12 +52,17 @@ export class AlunoComponent implements OnInit {
     try {
       this.loading = true;
       this.alunos = await this.alunoService.list();
+      const a = this.alunos.forEach(item => {
+        console.log(item.disciplines.name, 'a');
+        console.log(a);
+      });
     } catch (error) {
       this.loading = false;
       this.toastr.error('Error ao carregar alunos');
     } finally {
       this.loading = false;
     }
-
+  // para deletar a disciplina de um professor
+  // mandar na requisicao discipline = { empty = true }
   }
 }

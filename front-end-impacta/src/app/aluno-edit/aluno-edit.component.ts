@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlunosService } from '../shared/services/alunos.service';
+import { DisciplinasService } from '../shared/services/disciplinas.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -11,22 +12,25 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class AlunoEditComponent implements OnInit {
   loading = false;
   public aluno: any = {
-    nome: '',
+    name: '',
     disciplinaSelcionada: [] = [],
-    matricula: ''
+    RA: ''
   };
   public alunoId: string;
-  public disciplinas: Array<any>;
+  public hasChanges: false;
+  public disciplinas: any;
 
   constructor(
     private alunoService: AlunosService,
     public router: Router,
     private toastrService: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private disciplinasService: DisciplinasService
 
   ) { }
 
   ngOnInit() {
+    this.getDisciplines();
     this.route.params.subscribe(params => {
       this.alunoId = params.id;
       if (this.alunoId === 'details') {
@@ -46,18 +50,17 @@ export class AlunoEditComponent implements OnInit {
     }
 
   }
+
   async findById() {
     try {
       this.loading = true;
       const res = await this.alunoService.getById(this.alunoId);
-      if (res) {
-        this.aluno = {
-          _id: res['_id'],
-          nome: res['nome'],
-          matricula: res['matricula'],
-          disciplinas: res['disciplinas']
-        };
-      }
+      this.aluno = {
+        _id: res['_id'],
+        name: res['name'],
+        disciplinas: res['disciplinaSelcionada'],
+        RA: res['RA']
+      };
       this.loading = false;
     } catch (error) {
       this.loading = false;
@@ -67,6 +70,7 @@ export class AlunoEditComponent implements OnInit {
       this.loading = false;
     }
   }
+
   async update() {
     try {
       const res = await this.alunoService.update(this.alunoId, this.aluno);
@@ -88,12 +92,26 @@ export class AlunoEditComponent implements OnInit {
         this.toastrService.info('Selecione pelo menos uma disciplina');
         return;
       }
+      if (this.hasChanges) {
+        this.aluno = {
+          name: this.aluno.name,
+          disciplines: this.aluno.disciplinaSelcionada
+        };
+      }
       this.alunoId !== 'details' ? await this.update() : await this.create();
       this.router.navigateByUrl('/alunos');
     } catch (error) {
       console.log(error);
       this.toastrService.error(error);
     }
+  }
 
+  async getDisciplines() {
+    try {
+      this.disciplinas = await this.disciplinasService.list();
+      console.log(this.disciplinas);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
