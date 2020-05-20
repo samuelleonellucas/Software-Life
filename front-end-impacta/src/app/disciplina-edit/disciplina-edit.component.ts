@@ -14,8 +14,8 @@ export class DisciplinaEditComponent implements OnInit {
   loading = false;
   public discipline: any = {
     name: '',
-    professorSelecionado: [] = [],
-    cargaHoraria: ''
+    teacher: [] = [],
+    workload: ''
   };
   public horarios = [];
   public disciplinaId: string;
@@ -31,7 +31,7 @@ export class DisciplinaEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getTeachers(); 
+    this.getTeachers();
     this.horarios = ['36H', '40H', '72H', '80H', '120H', '160H'];
     this.route.params.subscribe(params => {
       this.disciplinaId = params.id;
@@ -42,9 +42,9 @@ export class DisciplinaEditComponent implements OnInit {
     });
   }
 
-  async create() {
+  async create(discipline) {
     try {
-      await this.disciplinasService.create(this.discipline);
+      await this.disciplinasService.create(discipline);
       this.toastrService.success('Disciplina criado com sucesso');
     } catch (error) {
       console.log(error);
@@ -75,9 +75,9 @@ export class DisciplinaEditComponent implements OnInit {
     }
   }
 
-  async update() {
+  async update(discipline) {
     try {
-      const res = await this.disciplinasService.update(this.disciplinaId, this.discipline);
+      const res = await this.disciplinasService.update(this.disciplinaId, discipline);
       this.toastrService.success('Disciplina atualizada com sucesso');
     } catch (error) {
       console.log(error);
@@ -91,18 +91,11 @@ export class DisciplinaEditComponent implements OnInit {
         this.toastrService.info('Nome da disciplina não pode ser vazio');
         return;
       }
-      if (!this.discipline.cargaHoraria) {
+      if (!this.discipline.workload) {
         this.toastrService.info('Carga horaria não pode ser vazio');
         return;
       }
-      if (this.hasChanges) {
-        this.discipline = {
-          name: this.discipline.name,
-          teacher: this.discipline.professorSelecionado,
-          workload: this.discipline.cargaHoraria
-        };
-      }
-      this.disciplinaId !== 'details' ? await this.update() : await this.create();
+      this.disciplinaId !== 'details' ? await this.update(this.discipline) : await this.create(this.discipline);
       this.router.navigateByUrl('/disciplinas');
     } catch (error) {
       console.log(error);

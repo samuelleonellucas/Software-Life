@@ -52,10 +52,6 @@ export class AlunoComponent implements OnInit {
     try {
       this.loading = true;
       this.alunos = await this.alunoService.list();
-      const a = this.alunos.forEach(item => {
-        console.log(item.disciplines.name, 'a');
-        console.log(a);
-      });
     } catch (error) {
       this.loading = false;
       this.toastr.error('Error ao carregar alunos');

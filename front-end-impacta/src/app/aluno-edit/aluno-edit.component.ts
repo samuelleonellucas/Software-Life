@@ -13,12 +13,11 @@ export class AlunoEditComponent implements OnInit {
   loading = false;
   public aluno: any = {
     name: '',
-    disciplinaSelcionada: [] = [],
-    RA: ''
+    disciplines: ''
   };
   public alunoId: string;
   public hasChanges: false;
-  public disciplinas: any;
+  public disciplines: any;
 
   constructor(
     private alunoService: AlunosService,
@@ -40,9 +39,9 @@ export class AlunoEditComponent implements OnInit {
     });
   }
 
-  async create() {
+  async create(aluno) {
     try {
-      await this.alunoService.create(this.aluno);
+      await this.alunoService.create(aluno);
       this.toastrService.success('Aluno criado com sucesso');
     } catch (error) {
       console.log(error);
@@ -55,10 +54,11 @@ export class AlunoEditComponent implements OnInit {
     try {
       this.loading = true;
       const res = await this.alunoService.getById(this.alunoId);
+      console.log(res['disciplines']);
       this.aluno = {
-        _id: res['_id'],
+        id: res['id'],
         name: res['name'],
-        disciplinas: res['disciplinaSelcionada'],
+        disciplines: res['disciplines'],
         RA: res['RA']
       };
       this.loading = false;
@@ -71,9 +71,9 @@ export class AlunoEditComponent implements OnInit {
     }
   }
 
-  async update() {
+  async update(aluno) {
     try {
-      const res = await this.alunoService.update(this.alunoId, this.aluno);
+      const res = await this.alunoService.update(this.alunoId, aluno);
       this.toastrService.success('Aluno atualizado com sucesso');
     } catch (error) {
       console.log(error);
@@ -83,22 +83,15 @@ export class AlunoEditComponent implements OnInit {
 
   async save() {
     try {
-      if (!this.aluno.nome) {
+      if (!this.aluno.name) {
         this.toastrService.info('Aluno não pode ser vazio');
         return;
       }
-      if (!this.aluno.disciplinaSelcionada) {
-        console.log(this.aluno.disciplinaSelcionada);
+      if (!this.aluno.disciplines) {
         this.toastrService.info('Selecione pelo menos uma disciplina');
         return;
       }
-      if (this.hasChanges) {
-        this.aluno = {
-          name: this.aluno.name,
-          disciplines: this.aluno.disciplinaSelcionada
-        };
-      }
-      this.alunoId !== 'details' ? await this.update() : await this.create();
+      this.alunoId !== 'details' ? await this.update(this.aluno) : await this.create(this.aluno);
       this.router.navigateByUrl('/alunos');
     } catch (error) {
       console.log(error);
@@ -108,8 +101,8 @@ export class AlunoEditComponent implements OnInit {
 
   async getDisciplines() {
     try {
-      this.disciplinas = await this.disciplinasService.list();
-      console.log(this.disciplinas);
+      this.disciplines = await this.disciplinasService.list();
+      console.log(this.disciplines, 'aaaaaaaaa');
     } catch (error) {
       console.error(error);
     }

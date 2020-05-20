@@ -2,12 +2,12 @@
     <app-loader [condition]="loading"></app-loader>
   <form *ngIf="!loading" id="new_customer" method="post">
       <div class="modal-header">
-        <h5 class="modal-title"><b>{{professor._id ? 'Atualização de Professor' : 'Cadastro de Professor'}}</b></h5>
+        <h5 class="modal-title"><b>{{professor.id ? 'Atualização de Professor' : 'Cadastro de Professor'}}</b></h5>
       </div>
       <div class="modal-body">
         <div class="form-row">
           <div class="col">
-            <input [(ngModel)]="professor.nome" name="nome" class="form-control"
+            <input [(ngModel)]="professor.name" name="nome" class="form-control"
               placeholder="Digite o nome completo do Professor..." type="text" name="nomeProfessor">
           </div>
   
@@ -15,7 +15,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">RP</span>
             </div>
-            <input [(ngModel)]="professor.matricula" disabled name="matricula" type="text" class="form-control"
+            <input [(ngModel)]="professor.RP" disabled name="matricula" type="text" class="form-control"
               placeholder="A matrícula será gerada..." type="text" name="matriculaProfessor">
           </div>
         </div>
@@ -25,13 +25,13 @@
             <span class="input-group-text" title="Escolha uma Disciplina..." id="basic-addon1">Escolha uma Disci...</span>
           </div>
           <div class="col">
-            <ng-select [clearable]="true" [multiple]="true" bindValue="_id" [items]="professor.disciplinas" bindLabel="nome"
-              [(ngModel)]="professor.disciplinaSelcionada" name="professor.disciplinaSelcionada" [closeOnSelect]="false"
+            <ng-select [clearable]="true" [multiple]="false" bindValue="id" [items]="disciplines" bindLabel="name"
+              [(ngModel)]="professor.discipline" name="professor.discipline" [closeOnSelect]="false"
               [searchable]="false">
               <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
                 <div class="ng-value" *ngFor="let item of items | slice:0:5">
                   <span class="ng-value-label">
-                    {{item.nome}}</span>
+                    {{item.name}}</span>
                   <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
                 </div>
                 <div class="ng-value" *ngIf="items.length > 5">
@@ -50,7 +50,7 @@
         </div>
   
         <button (click)="save()" type="button" class="btn btn-primary col-1 mb-3 cssbutton">
-          {{professor._id ? 'Atualizar' : 'Cadastrar'}}
+          {{professor.id ? 'Atualizar' : 'Cadastrar'}}
         </button>
       </div>
     </form>

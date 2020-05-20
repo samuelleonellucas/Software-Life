@@ -15,7 +15,7 @@
             <span class="input-group-text" title="Selecione um professor" id="basic-addon1">Selecione a carga horaria</span>
           </div>
           <div class="col">
-            <ng-select [items]="horarios" [(ngModel)]="discipline.cargaHoraria"></ng-select>
+            <ng-select [items]="horarios" [(ngModel)]="discipline.workload" name="discipline.workload"></ng-select>
           </div>
       </div>
       <div class="form-row">
@@ -23,7 +23,7 @@
           <span class="input-group-text" title="Selecione um professor" id="basic-addon1">Selecione um Professor</span>
         </div>
         <div class="col">
-          <ng-select [clearable]="true" [multiple]="true" bindValue="_id" [items]="teacher" bindLabel="name"
+          <ng-select [clearable]="true" [multiple]="false" bindValue="_id" [items]="teacher" bindLabel="name"
             [(ngModel)]="discipline.professorSelecionado" name="discipline.professorSelecionado" [closeOnSelect]="false"
             [searchable]="false">
             <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
