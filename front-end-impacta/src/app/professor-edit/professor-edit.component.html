@@ -1,6 +1,6 @@
 <div class="container">
-    <!-- <app-loader [condition]="loading"></app-loader> -->
-    <form id="new_customer" method="post">
+    <app-loader [condition]="loading"></app-loader>
+  <form *ngIf="!loading" id="new_customer" method="post">
       <div class="modal-header">
         <h5 class="modal-title"><b>Cadastro de Novo Professor</b></h5>
       </div>

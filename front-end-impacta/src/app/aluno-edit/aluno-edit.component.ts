@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./aluno-edit.component.css']
 })
 export class AlunoEditComponent implements OnInit {
+  loading = false;
   public aluno: any = {
     nome: '',
     disciplinaSelcionada: [] = [],
@@ -47,6 +48,7 @@ export class AlunoEditComponent implements OnInit {
   }
   async findById() {
     try {
+      this.loading = true;
       const res = await this.alunoService.getById(this.alunoId);
       if (res) {
         this.aluno = {
@@ -56,9 +58,13 @@ export class AlunoEditComponent implements OnInit {
           disciplinas: res['disciplinas']
         };
       }
+      this.loading = false;
     } catch (error) {
+      this.loading = false;
       console.log(error);
       this.toastrService.error('Erro ao obter aluno por id');
+    } finally {
+      this.loading = false;
     }
   }
   async update() {
@@ -90,5 +96,4 @@ export class AlunoEditComponent implements OnInit {
     }
 
   }
-
 }
