@@ -1,0 +1,57 @@
+<div class="container">
+    <!-- <app-loader [condition]="loading"></app-loader> -->
+    <form id="new_customer" method="post">
+      <div class="modal-header">
+        <h5 class="modal-title"><b>Cadastro de Novo Professor</b></h5>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="col">
+            <input [(ngModel)]="professor.nome" name="nome" class="form-control"
+              placeholder="Digite o nome completo do Professor..." type="text" name="nomeProfessor">
+          </div>
+  
+          <div class="input-group col-3 mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">RA</span>
+            </div>
+            <input [(ngModel)]="professor.matricula" disabled name="matricula" type="text" class="form-control"
+              placeholder="A matrícula será gerada..." type="text" name="matriculaProfessor">
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="input-group col-3 mb-3">
+            <label class="input-group-text">Disciplinas</label>
+          </div>
+          <div class="col ngselectStyle">
+            <ng-select [clearable]="true" [multiple]="true" bindValue="_id" [items]="professor.disciplinas" bindLabel="nome"
+              [(ngModel)]="professor.disciplinaSelcionada" name="professor.disciplinaSelcionada" [closeOnSelect]="false"
+              [searchable]="false">
+              <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                <div class="ng-value" *ngFor="let item of items | slice:0:5">
+                  <span class="ng-value-label">
+                    {{item.nome}}</span>
+                  <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                </div>
+                <div class="ng-value" *ngIf="items.length > 5">
+                  <span class="ng-value-label">{{items.length - 5}} more...</span>
+                </div>
+              </ng-template>
+            </ng-select>
+          </div>
+        </div>
+      </div>
+  
+      <div class="modal-footer row classFooter">
+        <div class="col mb-3">
+          <input type="submit" name="cancel" id="voltar" value="Voltar" class="btn btn-secondary"
+            [routerLink]="['/professores']">
+        </div>
+  
+        <button (click)="save()" type="button" class="btn btn-primary col-1 mb-3 cssbutton">
+          {{professor._id ? 'Atualizar' : 'Cadastrar'}}
+        </button>
+      </div>
+    </form>
+  </div>

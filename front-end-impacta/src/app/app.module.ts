@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoaderComponent } from './loader/loader.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ProfessorEditComponent } from './professor-edit/professor-edit.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NavbarComponent,
     HomeComponent,
     AlunoEditComponent,
-    LoaderComponent
+    LoaderComponent,
+    ProfessorEditComponent
   ],
   imports: [
     BrowserModule,

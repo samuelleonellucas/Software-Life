@@ -26,7 +26,7 @@
             <th>Operações</th>
           </tr>
         </thead>
-        <tbody *ngFor="let aluno of alunos | paginate : {itemsPerPage: 8, currentPage: p}">
+        <tbody *ngFor="let aluno of alunos | paginate : {itemsPerPage: 7, currentPage: p}">
           <tr>
             <th class="align-middle" scope="row">{{aluno?.id}}</th>
             <td class="align-middle">{{aluno?.nome}}</td>
