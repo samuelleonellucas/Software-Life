@@ -20,11 +20,11 @@
           </div>
         </div>
   
-        <div class="row">
-          <div class="input-group col-3 mb-3">
-            <label class="input-group-text">Disciplinas</label>
+        <div class="form-row">
+          <div class=" col-2 mb-3">
+            <span class="input-group-text" title="Escolha uma Disciplina..." id="basic-addon1">Escolha uma Disci...</span>
           </div>
-          <div class="col ngselectStyle">
+          <div class="col">
             <ng-select [clearable]="true" [multiple]="true" bindValue="_id" [items]="professor.disciplinas" bindLabel="nome"
               [(ngModel)]="professor.disciplinaSelcionada" name="professor.disciplinaSelcionada" [closeOnSelect]="false"
               [searchable]="false">
