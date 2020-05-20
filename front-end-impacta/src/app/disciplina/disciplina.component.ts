@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DisciplinasService } from '../shared/services/disciplinas.service';
 import Swal from 'sweetalert2';
 import { ToastrService } from 'ngx-toastr';
+import { DisciplinasService } from '../shared/services/disciplinas.service';
+import { ProfessorService } from '../shared/services/professores.service';
 
 @Component({
   selector: 'app-disciplina',
@@ -10,18 +11,21 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DisciplinaComponent implements OnInit {
 
-
+  public disciplines: any;
+  public teacher: any;
   disciplinas: any = [];
   disciplinaId: string;
   p = 1;
   loading = false;
   constructor(
-    private disciplinaService: DisciplinasService,
     private toastr: ToastrService,
+    private disciplinaService: DisciplinasService,
+    private professorService: ProfessorService
   ) { }
 
   ngOnInit() {
     this.get();
+    this.getTeachers();
   }
 
 
@@ -59,6 +63,14 @@ export class DisciplinaComponent implements OnInit {
       this.loading = false;
     }
 
+  }
+
+  async getTeachers() {
+    try {
+      this.teacher = await this.professorService.list();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
 }

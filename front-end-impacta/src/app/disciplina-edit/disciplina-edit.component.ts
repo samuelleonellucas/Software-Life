@@ -19,8 +19,9 @@ export class DisciplinaEditComponent implements OnInit {
   };
   public horarios = [];
   public disciplinaId: string;
-  public hasChanges: false;
+  public disciplines: any;
   public teacher: any;
+  public hasChanges: false;
 
   constructor(
     public router: Router,
@@ -31,8 +32,9 @@ export class DisciplinaEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getDisciplines();
     this.getTeachers();
-    this.horarios = ['36H', '40H', '72H', '80H', '120H', '160H'];
+    this.horarios = ['36', '40', '72', '80', '120', '160'];
     this.route.params.subscribe(params => {
       this.disciplinaId = params.id;
       if (this.disciplinaId === 'details') {
@@ -106,6 +108,14 @@ export class DisciplinaEditComponent implements OnInit {
   async getTeachers() {
     try {
       this.teacher = await this.professorService.list();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async getDisciplines() {
+    try {
+      this.disciplines = await this.disciplinasService.list();
     } catch (error) {
       console.error(error);
     }
