@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./professor-edit.component.css']
 })
 export class ProfessorEditComponent implements OnInit {
-
+  loading = false;
   public professor: any = {
     nome: '',
     disciplinaSelcionada: [] = [],
@@ -48,6 +48,7 @@ export class ProfessorEditComponent implements OnInit {
   }
   async findById() {
     try {
+      this.loading = true;
       const res = await this.professorService.getById(this.professorId);
       if (res) {
         this.professor = {
@@ -57,9 +58,13 @@ export class ProfessorEditComponent implements OnInit {
           disciplinas: res['disciplinas']
         };
       }
+      this.loading = false;
     } catch (error) {
+      this.loading = false;
       console.log(error);
       this.toastrService.error('Erro ao obter professor por id');
+    } finally {
+      this.loading = false;
     }
   }
   async update() {
