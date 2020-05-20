@@ -2,7 +2,7 @@
   <app-loader [condition]="loading"></app-loader>
   <form *ngIf="!loading" id="new_customer" method="post">
     <div class="modal-header">
-      <h5 class="modal-title"><b>Cadastro de Novo Aluno</b></h5>
+      <h5 class="modal-title"><b>{{aluno._id ? 'Atualização de Aluno' : 'Cadastro de Aluno'}}</b></h5>
     </div>
     <div class="modal-body">
       <div class="form-row">
