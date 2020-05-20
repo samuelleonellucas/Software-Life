@@ -4,6 +4,7 @@
     <div class="modal-header">
       <h5 class="modal-title"><b>{{aluno._id ? 'Atualização de Aluno' : 'Cadastro de Aluno'}}</b></h5>
     </div>
+
     <div class="modal-body">
       <div class="form-row">
         <div class="col">
@@ -20,11 +21,11 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="input-group col-3 mb-3">
-          <label class="input-group-text">Disciplinas</label>
+      <div class="form-row">
+        <div class=" col-2 mb-3">
+          <span class="input-group-text" id="basic-addon1">Disciplinas</span>
         </div>
-        <div class="col ngselectStyle">
+        <div class="col">
           <ng-select [clearable]="true" [multiple]="true" bindValue="_id" [items]="aluno.disciplinas" bindLabel="nome"
             [(ngModel)]="aluno.disciplinaSelcionada" name="aluno.disciplinaSelcionada" [closeOnSelect]="false"
             [searchable]="false">
