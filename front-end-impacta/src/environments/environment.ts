@@ -1,5 +1,5 @@
 const urls = {
-  baseuUrl: `http://localhost:3000/api/v1`
+  baseuUrl: `https://software-life.herokuapp.com/api/v1`
 };
 
 export const environment = {
