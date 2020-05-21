@@ -25,8 +25,8 @@
             <span class="input-group-text" title="Escolha uma Disciplina..." id="basic-addon1">Escolha uma Disci...</span>
           </div>
           <div class="col">
-            <ng-select [clearable]="true" [multiple]="false" bindValue="id" [items]="disciplines" bindLabel="name"
-              [(ngModel)]="professor.discipline" name="professor.discipline" [closeOnSelect]="false"
+            <ng-select [clearable]="true" [multiple]="true" bindValue="id" [items]="disciplines" bindLabel="name"
+              [(ngModel)]="professor.discipline_id" name="professor.discipline_id" [closeOnSelect]="false"
               [searchable]="false">
               <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
                 <div class="ng-value" *ngFor="let item of items | slice:0:5">

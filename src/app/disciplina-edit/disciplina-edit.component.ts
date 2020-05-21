@@ -14,7 +14,7 @@ export class DisciplinaEditComponent implements OnInit {
   loading = false;
   public discipline: any = {
     name: '',
-    teacher: [] = [],
+    teacher_id: [],
     workload: ''
   };
   public horarios = [];
@@ -58,16 +58,10 @@ export class DisciplinaEditComponent implements OnInit {
   async findById() {
     try {
       this.loading = true;
-      const res = await this.disciplinasService.getById(this.disciplinaId);
-      if (res) {
-        this.discipline = {
-          _id: res['_id'],
-          name: res['name'],
-          teacher: res['teacher'],
-          workload: res['workload']
-        };
-      }
+      this.discipline = await this.disciplinasService.getById(this.disciplinaId);
+      this.discipline.teacher_id = [this.discipline.teacher[0]];
       this.loading = false;
+
     } catch (error) {
       this.loading = false;
       console.log(error);
@@ -97,6 +91,10 @@ export class DisciplinaEditComponent implements OnInit {
         this.toastrService.info('Carga horaria não pode ser vazio');
         return;
       }
+      if (this.discipline.teacher_id.length > 1) {
+        return this.toastrService.info('É possivel selecionar apenas um professor');
+      }
+      this.discipline.teacher = this.discipline.teacher_id;
       this.disciplinaId !== 'details' ? await this.update(this.discipline) : await this.create(this.discipline);
       this.router.navigateByUrl('/disciplinas');
     } catch (error) {

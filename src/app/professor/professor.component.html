@@ -22,7 +22,7 @@
             <th>#</th>
             <th>Nome</th>
             <th>RP</th>
-            <th>Disciplina</th>
+            <th>Created At</th>
             <th>Operações</th>
           </tr>
         </thead>
@@ -31,7 +31,7 @@
             <th class="align-middle" scope="row">{{professor?.id}}</th>
             <td class="align-middle">{{professor?.name}}</td>
             <td class="align-middle">{{professor?.RP}}</td>
-            <td class="align-middle">{{professor?.discipline}}</td>
+            <td class="align-middle">{{professor?.createdAt | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
             <td>
               <button type="button" class="btn btn-primary" id="editButton" [routerLink]="['/professor', professor.id]">
                 <svg class="bi bi-gear-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"

@@ -27,7 +27,7 @@
         </div>
         <div class="col">
           <ng-select [clearable]="true" [multiple]="true" bindValue="id" [items]="disciplines" bindLabel="name"
-            [(ngModel)]="aluno.disciplines" name="aluno.disciplines" [closeOnSelect]="false"
+            [(ngModel)]="aluno.disciplines_id" name="aluno.disciplines" [closeOnSelect]="false"
             [searchable]="false">
             <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
               <div class="ng-value" *ngFor="let item of items | slice:0:5">

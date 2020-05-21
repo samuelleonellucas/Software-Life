@@ -12,7 +12,6 @@ export class AlunoComponent implements OnInit {
 
   alunos: any = [];
   alunoId: string;
-  disciplines: any;
   p = 1;
   loading = false;
   constructor(
@@ -23,7 +22,6 @@ export class AlunoComponent implements OnInit {
   ngOnInit() {
     this.getAlunos();
   }
-
 
   async delete(id) {
     try {
@@ -54,11 +52,10 @@ export class AlunoComponent implements OnInit {
       this.alunos = await this.alunoService.list();
     } catch (error) {
       this.loading = false;
+      console.error(error);
       this.toastr.error('Error ao carregar alunos');
     } finally {
       this.loading = false;
     }
-  // para deletar a disciplina de um professor
-  // mandar na requisicao discipline = { empty = true }
   }
 }

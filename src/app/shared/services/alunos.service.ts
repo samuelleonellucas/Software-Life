@@ -22,7 +22,11 @@ export class AlunosService {
   }
   create(body: any) {
     const url = `${this.url}/students`;
-    return this.http.post(url, body).toPromise();
+    return this.http.post(url, body,  {
+      params: {
+        apikey: 'cGFyYWJlbnM6dGFkZXUK'
+      }
+    }).toPromise();
   }
   getById(id: string) {
     const url = `${this.url}/students/${id}`;

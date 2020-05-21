@@ -13,7 +13,7 @@ export class AlunoEditComponent implements OnInit {
   loading = false;
   public aluno: any = {
     name: '',
-    disciplines: ''
+    disciplines_id: [],
   };
   public alunoId: string;
   public hasChanges: false;
@@ -53,14 +53,8 @@ export class AlunoEditComponent implements OnInit {
   async findById() {
     try {
       this.loading = true;
-      const res = await this.alunoService.getById(this.alunoId);
-      console.log(res['disciplines']);
-      this.aluno = {
-        id: res['id'],
-        name: res['name'],
-        disciplines: res['disciplines'],
-        RA: res['RA']
-      };
+      this.aluno = await this.alunoService.getById(this.alunoId);
+      console.log(this.aluno, 'find');
       this.loading = false;
     } catch (error) {
       this.loading = false;
@@ -72,6 +66,7 @@ export class AlunoEditComponent implements OnInit {
   }
 
   async update(aluno) {
+    console.log(aluno, 'update');
     try {
       const res = await this.alunoService.update(this.alunoId, aluno);
       this.toastrService.success('Aluno atualizado com sucesso');
@@ -87,10 +82,11 @@ export class AlunoEditComponent implements OnInit {
         this.toastrService.info('Aluno não pode ser vazio');
         return;
       }
-      if (!this.aluno.disciplines) {
+      if (!this.aluno.disciplines_id) {
         this.toastrService.info('Selecione pelo menos uma disciplina');
         return;
       }
+      this.aluno.disciplines = this.aluno.disciplines_id;
       this.alunoId !== 'details' ? await this.update(this.aluno) : await this.create(this.aluno);
       this.router.navigateByUrl('/alunos');
     } catch (error) {
@@ -102,7 +98,6 @@ export class AlunoEditComponent implements OnInit {
   async getDisciplines() {
     try {
       this.disciplines = await this.disciplinasService.list();
-      console.log(this.disciplines, 'aaaaaaaaa');
     } catch (error) {
       console.error(error);
     }

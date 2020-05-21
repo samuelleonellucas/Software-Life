@@ -13,7 +13,7 @@ export class ProfessorEditComponent implements OnInit {
   loading = false;
   public professor: any = {
     name: '',
-    discipline: [] = [],
+    discipline_id: [],
     RP: ''
   };
   public professorId: string;
@@ -53,15 +53,9 @@ export class ProfessorEditComponent implements OnInit {
   async findById() {
     try {
       this.loading = true;
-      const res = await this.professorService.getById(this.professorId);
-      if (res) {
-        this.professor = {
-          id: res['id'],
-          name: res['name'],
-          RP: res['RP'],
-        };
-      }
+      this.professor = await this.professorService.getById(this.professorId);
       this.loading = false;
+      this.professor.discipline_id = [this.professor.discipline.id];
     } catch (error) {
       this.loading = false;
       console.log(error);
@@ -86,10 +80,14 @@ export class ProfessorEditComponent implements OnInit {
         this.toastrService.info('Professor não pode ser vazio');
         return;
       }
-      if (!this.professor.discipline) {
+      if (!this.professor.discipline_id) {
         this.toastrService.info('Selecione pelo menos uma disciplina');
         return;
       }
+      if (this.professor.discipline_id.length > 1) {
+        return this.toastrService.info('Selecione somente uma disciplina');
+      }
+      this.professor.discipline = this.professor.discipline_id;
       this.professorId !== 'details' ? await this.update(this.professor) : await this.create(this.professor);
       this.router.navigateByUrl('/professores');
     } catch (error) {
