@@ -14,7 +14,11 @@ export class AlunosService {
 
   list() {
     const url = `${this.url}/students`;
-    return this.http.get(url).toPromise();
+    return this.http.get(url,  {
+      params: {
+        apikey: 'cGFyYWJlbnM6dGFkZXUK'
+      }
+    }).toPromise();
   }
   create(body: any) {
     const url = `${this.url}/students`;
@@ -22,15 +26,27 @@ export class AlunosService {
   }
   getById(id: string) {
     const url = `${this.url}/students/${id}`;
-    return this.http.get(url).toPromise();
+    return this.http.get(url, {
+      params: {
+        apikey: 'cGFyYWJlbnM6dGFkZXUK'
+      }
+    }).toPromise();
   }
   update(id: string, body: any) {
     const url = `${this.url}/students/${id}`;
-    return this.http.put(url, body).toPromise();
+    return this.http.put(url, body, {
+      params: {
+        apikey: 'cGFyYWJlbnM6dGFkZXUK'
+      }
+    }).toPromise();
   }
   delete(id: string) {
     const url = `${this.url}/students/${id}`;
-    return this.http.delete(url).toPromise();
+    return this.http.delete(url, {
+      params: {
+        apikey: 'cGFyYWJlbnM6dGFkZXUK'
+      }
+    }).toPromise();
   }
 
 }
