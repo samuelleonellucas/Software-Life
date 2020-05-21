@@ -14,7 +14,7 @@ export class ProfessorEditComponent implements OnInit {
   public professor: any = {
     name: '',
     discipline_id: [],
-    RP: ''
+    RP: '',
   };
   public professorId: string;
   public disciplines: any;
@@ -80,7 +80,7 @@ export class ProfessorEditComponent implements OnInit {
         this.toastrService.info('Professor não pode ser vazio');
         return;
       }
-      if (!this.professor.discipline_id) {
+      if (!this.professor.discipline_id.length) {
         this.toastrService.info('Selecione pelo menos uma disciplina');
         return;
       }
